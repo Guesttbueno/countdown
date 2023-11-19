@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BL Update Cooldown</title>
+    <style>
+        /* CSS for the logo and countdown */
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        #logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 50px;
+            height: 50px;
+        }
+
+        #countdown {
+            font-size: 48px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        h1 {
+            font-family: 'Google Sans', sans-serif;
+            font-weight: 500;
+            font-size: 24px;
+            text-align: center;
+            margin-top: 0;
+        }
+
+        #copyright {
+            font-size: 12px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #coded-by {
+            font-size: 10px;
+            text-align: center;
+            margin-top: 5px;
+        }
+    </style>
+    <link
+        href="https://fonts.googleapis.com/css?family=Google+Sans:400,500|Roboto:300,400,500,700|Source+Code+Pro:400,700&display=swap"
+        rel="stylesheet" nonce="9lTGZ1oztgIRE9OILCzQ2Q">
+</head>
+<body>
+    <img id="logo" src="https://media.discordapp.net/attachments/1143778629550088262/1175811739959443596/20230515_211905.png?ex=656c9704&is=655a2204&hm=5c891c70d643c85d2cf5c31db2c6b62b6bf1ca909750d481cda1cbd675c1c73d&" alt="Logo">
+    <div style="text-align: center;">
+        <h1>BL Update Cooldown</h1>
+        <div id="countdown"></div>
+    </div>
+
+    <div id="copyright">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        © Building Land 2023
+        <div id="coded-by">Coded by Guesttbueno</div>
+    </div>
+
+    <script>
+        // JavaScript for the countdown
+        var countdownElement = document.getElementById("countdown");
+        var targetDate = new Date('November 19, 2023 00:00:00').getTime();
+        var threeYearsLater = new Date(targetDate + (3 * 365 * 24 * 60 * 60 * 1000));
+
+        var countdownInterval = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = threeYearsLater - now;
+
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                countdownElement.innerHTML = "Countdown Finished";
+                return;
+            }
+
+            var years = Math.floor(distance / (1000 * 60 * 60 * 24 * 365));
+            var months = Math.floor((distance % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
+            var days = Math.floor((distance % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Formatting the countdown values with leading zeros
+            var formattedYears = ("0" + years).slice(-2);
+            var formattedMonths = ("0" + months).slice(-2);
+            var formattedDays = ("0" + days).slice(-2);
+            var formattedHours = ("0" + hours).slice(-2);
+            var formattedMinutes = ("0" + minutes).slice(-2);
+            var formattedSeconds = ("0" + seconds).slice(-2);
+
+            // Displaying the countdown
+            countdownElement.innerHTML = formattedYears + ":" + formattedMonths + ":" + formattedDays + ":" + formattedHours + ":" + formattedMinutes + ":" + formattedSeconds;
+        }, 1000);
+    </script>
+</body>
+</html>
